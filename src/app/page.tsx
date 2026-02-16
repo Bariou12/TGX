@@ -40,7 +40,7 @@ const news = [
   },
 ];
 
-const partners = ["PCH", "AFRINIC", "PCH", "AFRINIC"];
+const partners = ["Ministeres", "ARCEP", "AFRINIC", "PCH", "PeeringDB", "AFIX"];
 
 export default function Home() {
   return (
