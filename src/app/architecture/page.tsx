@@ -65,65 +65,36 @@ export default function ArchitecturePage() {
               </>
             )}
 
-            {active === "statistiques" && (
-              <>
-                <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-8">Statistiques</h2>
-                <div className="space-y-8">
-                  <div>
-                    <h3 className="font-bold text-base text-tgix-dark mb-3">Trafic global sur SWBB01</h3>
-                    <div className="bg-gray-100 rounded-lg p-6 h-48 flex items-center justify-center">
-                      <div className="w-full h-full bg-gradient-to-r from-blue-200 via-green-200 to-blue-100 rounded opacity-60 flex items-end px-4 pb-4">
-                        <div className="flex gap-1 items-end w-full">
-                          {Array.from({ length: 30 }).map((_, i) => (
-                            <div
-                              key={i}
-                              className="flex-1 bg-blue-500/40 rounded-t"
-                              style={{ height: `${Math.random() * 80 + 20}%` }}
-                            />
-                          ))}
-                        </div>
+              {active === "statistiques" && (
+                <>
+                  <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-8">Statistiques</h2>
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+                    <p className="text-sm text-blue-800">
+                      <strong>Note :</strong> Les graphes dynamiques de monitoring du trafic de l&apos;IXP (Zabbix) seront intégrés sur cette page. L&apos;intégration est en cours avec l&apos;équipe de gestion technique du TGIX.
+                    </p>
+                  </div>
+                  <div className="space-y-8">
+                    <div>
+                      <h3 className="font-bold text-base text-tgix-dark mb-3">Trafic global sur SWBB01</h3>
+                      <div className="bg-gray-100 rounded-lg p-6 h-48 flex items-center justify-center">
+                        <p className="text-sm text-gray-500">Graphe Zabbix - En attente d&apos;intégration</p>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-base text-tgix-dark mb-3">Trafic global sur SWBB01 et SWBB02</h3>
+                      <div className="bg-gray-100 rounded-lg p-6 h-48 flex items-center justify-center">
+                        <p className="text-sm text-gray-500">Graphe Zabbix - En attente d&apos;intégration</p>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-base text-tgix-dark mb-3">Trafic global sur SWBB02</h3>
+                      <div className="bg-gray-100 rounded-lg p-6 h-48 flex items-center justify-center">
+                        <p className="text-sm text-gray-500">Graphe Zabbix - En attente d&apos;intégration</p>
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-base text-tgix-dark mb-3">Trafic global sur SWBB01 et SWBB02</h3>
-                    <div className="bg-gray-100 rounded-lg p-6 h-48 flex items-center justify-center">
-                      <div className="w-full h-full bg-gradient-to-r from-green-200 via-green-300 to-green-100 rounded opacity-60 flex items-end px-4 pb-4">
-                        <div className="flex gap-1 items-end w-full">
-                          {Array.from({ length: 30 }).map((_, i) => (
-                            <div
-                              key={i}
-                              className="flex-1 bg-green-600/40 rounded-t"
-                              style={{ height: `${Math.random() * 80 + 20}%` }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-base text-tgix-dark mb-3">Trafic global sur SWBB02</h3>
-                    <div className="bg-gray-100 rounded-lg p-6 h-48 flex items-center justify-center">
-                      <div className="w-full h-full bg-gradient-to-r from-blue-100 via-blue-200 to-green-100 rounded opacity-60 flex items-end px-4 pb-4">
-                        <div className="flex gap-1 items-end w-full">
-                          {Array.from({ length: 30 }).map((_, i) => (
-                            <div
-                              key={i}
-                              className="flex-1 bg-blue-400/40 rounded-t"
-                              style={{ height: `${Math.random() * 80 + 20}%` }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-6 text-center text-xs text-tgix-gray">
-                  <p className="font-bold text-red-600 text-lg">MRTG <span className="text-blue-800">MULTI ROUTER TRAFFIC GRAPHER</span></p>
-                  <p>version 2.17.4</p>
-                </div>
-              </>
-            )}
+                </>
+              )}
 
             {active === "schema" && (
               <>
