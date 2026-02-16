@@ -146,11 +146,11 @@ export default function MembresPage() {
               </p>
             </section>
 
-            {/* Textes fondamentaux / Membres connectés */}
-            <section id="membres">
-              <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-8">
-                Textes fondamentaux
-              </h2>
+              {/* Membres connectés */}
+              <section id="membres">
+                <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-8">
+                  Membres connectés
+                </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {membresConnectes.map((m, i) => (
                   <div key={i} className="space-y-3">
