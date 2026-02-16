@@ -2,9 +2,9 @@ import { Globe, Wifi, Users, CheckCircle, Eye, Target, Heart } from "lucide-reac
 import Link from "next/link";
 
 const stats = [
-  { icon: Globe, value: "06", label: "AS connectes" },
-  { icon: Wifi, value: "05", label: "Ports actifs" },
-  { icon: Users, value: "04", label: "Utilisateuro RS" },
+  { icon: Globe, value: "07", label: "AS connectes" },
+  { icon: Wifi, value: "10", label: "Ports actifs" },
+  { icon: Users, value: "04", label: "Utilisateurs RS" },
   { icon: CheckCircle, value: "100%", label: "Disponibilite" },
 ];
 
