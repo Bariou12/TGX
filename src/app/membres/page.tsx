@@ -1,194 +1,207 @@
 "use client";
 
-import PageBanner from "@/components/PageBanner";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import PageBanner from "@/components/PageBanner";
+import { UserPlus, Shield, Network, ChevronRight, Globe } from "lucide-react";
 
 const sidebarItems = [
-  { id: "devenir", label: "Devenir membre" },
-  { id: "regles", label: "Règles d'interconnexion" },
-  { id: "membres", label: "Membres connectés" },
+  { id: "devenir", label: "Devenir membre", icon: UserPlus },
+  { id: "regles", label: "Regles d'interconnexion", icon: Shield },
+  { id: "membres", label: "Membres connectes", icon: Network },
 ];
 
 const conditions = [
-  "Exercer à titre professionnel, des activités de télécommunications dans le respect des textes en vigueur en la matière au TOGO ;",
-  "Etre susceptible de produire ou de fournir des contenus et d'échanger du trafic Internet ;",
-  "Adresser une demande officielle à TGIX ;",
-  "S'acquitter du droit d'adhésion fixé par l'assemblée Générale ;",
-  "Se conformer strictement aux présents statuts et au règlement intérieur de l'association ;",
-  "S'acquitter régulièrement et à bonne date de ses cotisations.",
+  "Exercer a titre professionnel, des activites de telecommunications dans le respect des textes en vigueur en la matiere au TOGO ;",
+  "Etre susceptible de produire ou de fournir des contenus et d'echanger du trafic Internet ;",
+  "Adresser une demande officielle a TGIX ;",
+  "S'acquitter du droit d'adhesion fixe par l'assemblee Generale ;",
+  "Se conformer strictement aux presents statuts et au reglement interieur de l'association ;",
+  "S'acquitter regulierement et a bonne date de ses cotisations.",
 ];
 
 const membresConnectes = [
   {
     name: "YAS TOGO",
-    logo: "yas",
-    color: "#e74c3c",
-    description:
-      "TOGO CELLULAIRE est une société d'Etat, constituée sous la forme d'une société anonyme de droit privé créée en 1997. Elle est une filiale...",
+    initials: "YAS",
+    color: "from-red-500 to-red-600",
+    description: "TOGO CELLULAIRE est une societe d'Etat, constituee sous la forme d'une societe anonyme de droit prive creee en 1997.",
   },
   {
     name: "GVA",
-    logo: "gva",
-    color: "#6c3483",
-    description:
-      "Group Vivendi Africa – GVA – est une filiale du groupe Vivendi dédiée au développement de l'accès internet Très Haut Débit en Afrique. GVA mobilis...",
+    initials: "GVA",
+    color: "from-purple-600 to-purple-700",
+    description: "Group Vivendi Africa est une filiale du groupe Vivendi dediee au developpement de l'acces internet Tres Haut Debit en Afrique.",
   },
   {
-    name: "CAFE INFORMATIQUE & TELECOMMUNICATIONS",
-    logo: "cafe",
-    color: "#27ae60",
-    description:
-      "CAFE Informatique est une société anonyme détenu entièrement par des capitaux privés. La société a commencé ses activités en 1996 dans le...",
+    name: "CAFE Informatique",
+    initials: "CAFE",
+    color: "from-emerald-500 to-emerald-600",
+    description: "CAFE Informatique est une societe anonyme detenu entierement par des capitaux prives. La societe a commence ses activites en 1996.",
   },
   {
     name: "MOOV TOGO",
-    logo: "moov",
-    color: "#2980b9",
-    description:
-      "MOOV Togo est né en 2006 du rachat de TELECEL TOGO, qui exploitait depuis 1998 une licence d'exploitation de réseaux e...",
+    initials: "MOOV",
+    color: "from-blue-500 to-blue-600",
+    description: "MOOV Togo est ne en 2006 du rachat de TELECEL TOGO, qui exploitait depuis 1998 une licence d'exploitation de reseaux.",
   },
   {
     name: "TEOLIS",
-    logo: "teolis",
-    color: "#f39c12",
-    description:
-      "TEOLIS est un acteur du secteur des télécommunications au Togo, contribuant au développement de l'infrastructure numérique nationale.",
+    initials: "TEO",
+    color: "from-amber-500 to-amber-600",
+    description: "TEOLIS est un acteur du secteur des telecommunications au Togo, contribuant au developpement de l'infrastructure numerique nationale.",
   },
 ];
+
+const contentVariants = {
+  hidden: { opacity: 0, x: 20 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+  exit: { opacity: 0, x: -20, transition: { duration: 0.3 } },
+};
 
 export default function MembresPage() {
   const [active, setActive] = useState("devenir");
 
   return (
     <main>
-      <PageBanner title="Membres" />
+      <PageBanner title="Membres" subtitle="Rejoignez l'ecosysteme d'interconnexion du Togo" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="flex flex-col md:flex-row gap-10 md:gap-16">
-          {/* Sidebar */}
-          <nav className="md:w-56 shrink-0">
-            <ul className="space-y-1">
-              {sidebarItems.map((item) => (
-                <li key={item.id}>
-                  <button
-                    onClick={() => {
-                      setActive(item.id);
-                      document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }}
-                    className={`w-full text-left px-4 py-2.5 text-sm font-medium transition-colors ${
-                      active === item.id
-                        ? "border-l-4 border-tgix-green bg-tgix-dark text-white rounded-r-md"
-                        : "text-tgix-dark hover:text-tgix-green"
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
+      <section className="relative py-20 md:py-28 bg-white">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-tgix-green/3 rounded-full blur-[120px] pointer-events-none" />
 
-          {/* Content */}
-          <div className="flex-1 min-w-0">
-            {/* Devenir membre */}
-            <section id="devenir" className="mb-14">
-              <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-6">
-                Devenir membre
-              </h2>
-              <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                Peuvent adhérer à TGIX sans que cette énumération ne soit exhaustive, les entreprises de télécommunication, les
-                fournisseurs d&apos;accès Internet, les fournisseurs ou producteurs de contenus, les organisations internationales de
-                développement, les organismes de recherche ou d&apos;enseignement privés ou publics exerçant leurs activités au
-                TOGO et remplissant les conditions suivantes :
-              </p>
-              <ul className="space-y-2 mb-6 ml-4">
-                {conditions.map((c, i) => (
-                  <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-tgix-dark mt-1.5 shrink-0"></span>
-                    {c}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Les demandes d&apos;adhésion sont reçues et analysées par le Directeur exécutif qui a la faculté de demander la
-                production de tous les documents qu&apos;il juge utiles pour l&apos;instruction de la demande.
-                <br />
-                L&apos;admission en tant que membre prend effet dès paiement des droits d&apos;adhésion et de la cotisation pour l&apos;année
-                en cours, au prorata du temps restant à courir par trimestre indivisible.
-              </p>
-            </section>
-
-            {/* Règles d'interconnexion */}
-            <section id="regles" className="mb-14">
-              <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-6">
-                Règles d&apos;interconnexion
-              </h2>
-              <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                Peuvent adhérer à TGIX sans que cette énumération ne soit exhaustive, les entreprises de télécommunication, les
-                fournisseurs d&apos;accès Internet, les fournisseurs ou producteurs de contenus, les organisations internationales de
-                développement, les organismes de recherche ou d&apos;enseignement privés ou publics exerçant leurs activités au
-                TOGO et remplissant les conditions suivantes :
-              </p>
-              <ul className="space-y-2 mb-6 ml-4">
-                {conditions.map((c, i) => (
-                  <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-tgix-dark mt-1.5 shrink-0"></span>
-                    {c}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Les demandes d&apos;adhésion sont reçues et analysées par le Directeur exécutif qui a la faculté de demander la
-                production de tous les documents qu&apos;il juge utiles pour l&apos;instruction de la demande.
-                <br />
-                L&apos;admission en tant que membre prend effet dès paiement des droits d&apos;adhésion et de la cotisation pour l&apos;année
-                en cours, au prorata du temps restant à courir par trimestre indivisible.
-              </p>
-            </section>
-
-              {/* Membres connectés */}
-              <section id="membres">
-                <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-8">
-                  Membres connectés
-                </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                {membresConnectes.map((m, i) => (
-                  <div key={i} className="space-y-3">
-                    <div
-                      className="w-16 h-16 rounded-xl flex items-center justify-center text-white font-bold text-xs"
-                      style={{ backgroundColor: m.color }}
-                    >
-                      {m.logo === "yas" && (
-                        <span className="text-lg italic font-black">yas</span>
-                      )}
-                      {m.logo === "gva" && (
-                        <div className="text-center leading-tight">
-                          <span className="text-[8px] block">Group Vivendi Africa</span>
-                          <span className="text-lg font-black">gva</span>
-                        </div>
-                      )}
-                      {m.logo === "cafe" && (
-                        <span className="text-2xl">🌐</span>
-                      )}
-                      {m.logo === "moov" && (
-                          <div className="text-center">
-                            <span className="text-[10px] block font-bold">Moov</span>
-                            <span className="text-[8px]">Africa</span>
-                          </div>
-                        )}
-                        {m.logo === "teolis" && (
-                          <span className="text-xs font-black tracking-tight">TEOLIS</span>
-                        )}
-                    </div>
-                    <h3 className="font-bold text-sm text-tgix-dark uppercase">{m.name}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{m.description}</p>
-                  </div>
-                ))}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+            {/* Sidebar */}
+            <aside className="lg:w-72 shrink-0">
+              <div className="lg:sticky lg:top-28">
+                <p className="text-xs font-semibold tracking-[0.15em] uppercase text-tgix-muted mb-4">Navigation</p>
+                <nav className="space-y-1.5">
+                  {sidebarItems.map((s) => {
+                    const isActive = active === s.id;
+                    return (
+                      <button
+                        key={s.id}
+                        onClick={() => setActive(s.id)}
+                        className={`group flex items-center gap-3 w-full text-left px-5 py-3.5 rounded-2xl text-sm font-medium transition-all duration-300 ${
+                          isActive
+                            ? "bg-tgix-dark text-white shadow-lg shadow-tgix-dark/20"
+                            : "text-tgix-dark/60 hover:text-tgix-dark hover:bg-tgix-light"
+                        }`}
+                      >
+                        <s.icon size={18} className={isActive ? "text-tgix-green" : "text-tgix-muted group-hover:text-tgix-green transition-colors"} />
+                        <span className="flex-1">{s.label}</span>
+                        <ChevronRight size={14} className={`transition-all ${isActive ? "opacity-100 text-tgix-green" : "opacity-0 group-hover:opacity-50"}`} />
+                      </button>
+                    );
+                  })}
+                </nav>
               </div>
-            </section>
+            </aside>
+
+            {/* Content */}
+            <div className="flex-1 min-w-0">
+              <AnimatePresence mode="wait">
+                {active === "devenir" && (
+                  <motion.div key="devenir" variants={contentVariants} initial="hidden" animate="visible" exit="exit">
+                    <div className="flex items-center gap-3 mb-6">
+                      <span className="w-10 h-[2px] bg-tgix-green" />
+                      <span className="text-xs font-semibold tracking-[0.2em] uppercase text-tgix-green">Adhesion</span>
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-tgix-dark tracking-tight mb-8">
+                      Devenir membre
+                    </h2>
+                    <div className="space-y-5 text-tgix-dark/60 leading-relaxed">
+                      <p>
+                        Peuvent adherer a TGIX sans que cette enumeration ne soit exhaustive, les entreprises de telecommunication, les
+                        fournisseurs d&apos;acces Internet, les fournisseurs ou producteurs de contenus, les organisations internationales de
+                        developpement, les organismes de recherche ou d&apos;enseignement prives ou publics exercant leurs activites au
+                        TOGO et remplissant les conditions suivantes :
+                      </p>
+                      <ul className="space-y-3 ml-1">
+                        {conditions.map((c, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <span className="w-1.5 h-1.5 rounded-full bg-tgix-green mt-2 shrink-0" />
+                            <span>{c}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <p>
+                        Les demandes d&apos;adhesion sont recues et analysees par le Directeur executif qui a la faculte de demander la
+                        production de tous les documents qu&apos;il juge utiles pour l&apos;instruction de la demande.
+                      </p>
+                      <p>
+                        L&apos;admission en tant que membre prend effet des paiement des droits d&apos;adhesion et de la cotisation pour l&apos;annee
+                        en cours, au prorata du temps restant a courir par trimestre indivisible.
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+
+                {active === "regles" && (
+                  <motion.div key="regles" variants={contentVariants} initial="hidden" animate="visible" exit="exit">
+                    <div className="flex items-center gap-3 mb-6">
+                      <span className="w-10 h-[2px] bg-tgix-green" />
+                      <span className="text-xs font-semibold tracking-[0.2em] uppercase text-tgix-green">Peering</span>
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-tgix-dark tracking-tight mb-8">
+                      Regles d&apos;interconnexion
+                    </h2>
+                    <div className="space-y-5 text-tgix-dark/60 leading-relaxed">
+                      <p>
+                        Peuvent adherer a TGIX sans que cette enumeration ne soit exhaustive, les entreprises de telecommunication, les
+                        fournisseurs d&apos;acces Internet, les fournisseurs ou producteurs de contenus, les organisations internationales de
+                        developpement, les organismes de recherche ou d&apos;enseignement prives ou publics exercant leurs activites au
+                        TOGO et remplissant les conditions suivantes :
+                      </p>
+                      <ul className="space-y-3 ml-1">
+                        {conditions.map((c, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <span className="w-1.5 h-1.5 rounded-full bg-tgix-green mt-2 shrink-0" />
+                            <span>{c}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <p>
+                        Les demandes d&apos;adhesion sont recues et analysees par le Directeur executif qui a la faculte de demander la
+                        production de tous les documents qu&apos;il juge utiles pour l&apos;instruction de la demande.
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+
+                {active === "membres" && (
+                  <motion.div key="membres" variants={contentVariants} initial="hidden" animate="visible" exit="exit">
+                    <div className="flex items-center gap-3 mb-6">
+                      <span className="w-10 h-[2px] bg-tgix-green" />
+                      <span className="text-xs font-semibold tracking-[0.2em] uppercase text-tgix-green">Connectes</span>
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-tgix-dark tracking-tight mb-10">
+                      Membres connectes
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      {membresConnectes.map((m, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.08 }}
+                          className="group p-6 rounded-2xl bg-tgix-light border border-transparent hover:border-tgix-green/20 transition-all duration-500 card-hover"
+                        >
+                          <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${m.color} flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-500`}>
+                            <span className="text-white font-bold text-xs">{m.initials}</span>
+                          </div>
+                          <h3 className="font-bold text-tgix-dark mb-2">{m.name}</h3>
+                          <p className="text-sm text-tgix-muted leading-relaxed">{m.description}</p>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }
