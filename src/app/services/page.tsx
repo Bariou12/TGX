@@ -11,10 +11,10 @@ const sidebarItems = [
 const tarifsFCFA = [
   { designation: "Frais d'adhésion", membres: "295 000 CFA", nonMembres: "0 FCFA" },
   { designation: "Cotisation annuelles", membres: "142 000 F CFA", nonMembres: "0 FCFA" },
-  { designation: "Redevances d'interconnexion\nPorts 10 Mbps", membres: "120 000 F CFA", nonMembres: "240 000 FCFA" },
-  { designation: "Redevances d'interconnexion\nPorts 100 Mbps", membres: "500 000 F CFA", nonMembres: "1 000 000 FCFA" },
   { designation: "Redevances d'interconnexion\nPorts 1 Gbps", membres: "1 500 000 F CFA", nonMembres: "3 000 000 FCFA" },
   { designation: "Redevance d'interconnexion\nPorts 10 Gbps", membres: "3 000 000 F CFA", nonMembres: "6 000 000 FCFA" },
+  { designation: "Redevance d'interconnexion\nPorts 40 Gbps", membres: "5 000 000 F CFA", nonMembres: "10 000 000 FCFA" },
+  { designation: "Redevance d'interconnexion\nPorts 100 Gbps", membres: "8 000 000 F CFA", nonMembres: "16 000 000 FCFA" },
 ];
 
 const tarifsDollars = [
