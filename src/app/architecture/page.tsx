@@ -11,9 +11,9 @@ const sections = [
 ];
 
 const stats = [
-  { icon: Globe, value: "06", label: "AS connectes" },
-  { icon: Wifi, value: "05", label: "Ports actifs" },
-  { icon: Users, value: "04", label: "Utilisateuro RS" },
+  { icon: Globe, value: "07", label: "AS connectes" },
+  { icon: Wifi, value: "10", label: "Ports actifs" },
+  { icon: Users, value: "04", label: "Utilisateurs RS" },
 ];
 
 export default function ArchitecturePage() {
