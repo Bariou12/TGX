@@ -6,10 +6,11 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { href: "/tgix", label: "TGIX" },
+  { href: "/tgix", label: "A PROPOS" },
   { href: "/membres", label: "MEMBRES" },
   { href: "/services", label: "SERVICES ET TARIFS" },
   { href: "/architecture", label: "ARCHITECTURE TECHNIQUE DU TGIX" },
+  { href: "/publications", label: "PUBLICATIONS" },
   { href: "/actualites", label: "ACTUALITES ET EVENT" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "CONTACT" },
