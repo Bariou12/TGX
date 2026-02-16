@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-tgix-dark: #0c2233;
+  --color-tgix-darker: #091a28;
+  --color-tgix-green: #2ee8a5;
+  --color-tgix-green-dark: #22c58c;
+  --color-tgix-navy: #132f42;
+  --color-tgix-text: #1a1a2e;
+  --color-tgix-gray: #6b7280;
+  --color-tgix-light: #f8f9fa;
+  --color-tgix-banner: #0e2a3c;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #ffffff;
+  --foreground: #1a1a2e;
+}
+
+@layer base {
+  * {
+    @apply border-gray-200;
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-white text-tgix-text;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+  display: none !important;
+}
+
+/* Banner overlay */
+.banner-overlay {
+  background: linear-gradient(to bottom, rgba(12, 34, 51, 0.85), rgba(12, 34, 51, 0.75));
+}
+
+.banner-bg {
+  background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Scrollbar */
+html {
+  scroll-behavior: smooth;
+}
