@@ -47,6 +47,13 @@ const membresConnectes = [
     description:
       "MOOV Togo est né en 2006 du rachat de TELECEL TOGO, qui exploitait depuis 1998 une licence d'exploitation de réseaux e...",
   },
+  {
+    name: "TEOLIS",
+    logo: "teolis",
+    color: "#f39c12",
+    description:
+      "TEOLIS est un acteur du secteur des télécommunications au Togo, contribuant au développement de l'infrastructure numérique nationale.",
+  },
 ];
 
 export default function MembresPage() {
