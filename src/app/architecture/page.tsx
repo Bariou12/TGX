@@ -98,42 +98,48 @@ export default function ArchitecturePage() {
 
             {active === "schema" && (
               <>
-                <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-8">Schema de l&apos;architechture</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-8">Schema de l&apos;architecture</h2>
                 <div className="bg-gray-50 rounded-lg p-8 border">
                   <div className="text-center">
                     {/* Architecture diagram representation */}
                     <div className="mb-8">
-                      <h3 className="text-lg font-bold uppercase text-tgix-dark mb-6">LOCAUX OPERATEURS</h3>
-                      <div className="flex justify-center gap-8 flex-wrap">
+                      <h3 className="text-lg font-bold uppercase text-tgix-dark mb-6">LOCAUX OPERATEURS / MEMBRES</h3>
+                      <div className="flex justify-center gap-6 flex-wrap">
                         <div className="bg-white border-2 border-gray-300 rounded-lg p-4 text-center">
-                          <p className="text-xs text-red-500 mb-1">Routeur Vlx-a-</p>
-                          <p className="font-bold text-sm">AS Tgt</p>
-                          <p className="text-xs text-tgix-gray">IXP ASN TGT</p>
+                          <p className="text-xs text-red-500 mb-1">Routeur</p>
+                          <p className="font-bold text-sm">AS YAS TOGO</p>
                         </div>
                         <div className="bg-white border-2 border-gray-300 rounded-lg p-4 text-center">
-                          <p className="text-xs text-red-500 mb-1">Routeur Vlx-a-</p>
-                          <p className="font-bold text-sm">AS Cafe</p>
-                          <p className="text-xs text-tgix-gray">IXP ASN Cafe</p>
+                          <p className="text-xs text-red-500 mb-1">Routeur</p>
+                          <p className="font-bold text-sm">AS GVA</p>
                         </div>
                         <div className="bg-white border-2 border-gray-300 rounded-lg p-4 text-center">
-                          <p className="text-xs text-red-500 mb-1">Routeur Vlx-a-</p>
-                          <p className="font-bold text-sm">AS Moov</p>
-                          <p className="text-xs text-tgix-gray">IXP ASN Moov</p>
+                          <p className="text-xs text-red-500 mb-1">Routeur</p>
+                          <p className="font-bold text-sm">AS CAFE</p>
+                        </div>
+                        <div className="bg-white border-2 border-gray-300 rounded-lg p-4 text-center">
+                          <p className="text-xs text-red-500 mb-1">Routeur</p>
+                          <p className="font-bold text-sm">AS MOOV</p>
+                        </div>
+                        <div className="bg-white border-2 border-gray-300 rounded-lg p-4 text-center">
+                          <p className="text-xs text-red-500 mb-1">Routeur</p>
+                          <p className="font-bold text-sm">AS TEOLIS</p>
                         </div>
                       </div>
                     </div>
 
                     <div className="bg-orange-100 rounded-lg p-4 mb-6">
-                      <p className="font-bold text-sm text-orange-800">Reseau fibre optique</p>
+                      <p className="font-bold text-sm text-orange-800">Reseau fibre optique / Liens de transport</p>
                     </div>
 
                     <div className="mb-8">
                       <div className="flex justify-center gap-8 flex-wrap">
                         <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4 text-center">
-                          <p className="font-bold text-sm">Coeur IXP</p>
+                          <p className="font-bold text-sm">Coeur IXP (L2 Ethernet)</p>
+                          <p className="text-xs text-gray-500 mb-2">Architecture redondee</p>
                           <div className="flex gap-4 mt-2">
-                            <div className="bg-white border rounded p-2 text-xs">SW-BB1</div>
-                            <div className="bg-white border rounded p-2 text-xs">SW-B02</div>
+                            <div className="bg-white border rounded p-2 text-xs">SW-BB01</div>
+                            <div className="bg-white border rounded p-2 text-xs">SW-BB02</div>
                           </div>
                         </div>
                       </div>
@@ -143,30 +149,35 @@ export default function ArchitecturePage() {
                       <h3 className="text-lg font-bold uppercase text-tgix-dark mb-4">LOCAL TGIX</h3>
                       <div className="flex justify-center gap-6 flex-wrap text-xs">
                         <div className="bg-white border rounded p-3">
-                          <p className="font-bold">Router Transit</p>
+                          <p className="font-bold">Route Server 1</p>
                         </div>
                         <div className="bg-white border rounded p-3">
-                          <p className="font-bold">Router Gestion</p>
+                          <p className="font-bold">Route Server 2</p>
                         </div>
                         <div className="bg-white border rounded p-3">
-                          <p className="font-bold">RS1</p>
-                        </div>
-                        <div className="bg-white border rounded p-3">
-                          <p className="font-bold">RS2</p>
+                          <p className="font-bold">Routeur Gestion</p>
                         </div>
                       </div>
                       <div className="flex justify-center gap-6 mt-4 flex-wrap text-xs">
                         <div className="bg-white border rounded p-3">
-                          <p className="font-bold">Firewall1</p>
-                        </div>
-                        <div className="bg-white border rounded p-3">
-                          <p className="font-bold">VLAN Exploitation</p>
+                          <p className="font-bold">Firewall</p>
                         </div>
                         <div className="bg-white border rounded p-3">
                           <p className="font-bold">VLAN Production</p>
                         </div>
                         <div className="bg-white border rounded p-3">
-                          <p className="font-bold">Firewall2</p>
+                          <p className="font-bold">VLAN Exploitation</p>
+                        </div>
+                        <div className="bg-white border rounded p-3">
+                          <p className="font-bold">Supervision (Zabbix)</p>
+                        </div>
+                      </div>
+                      <div className="flex justify-center gap-6 mt-4 flex-wrap text-xs">
+                        <div className="bg-white border rounded p-3">
+                          <p className="font-bold">DNS (D-Root, PCH)</p>
+                        </div>
+                        <div className="bg-white border rounded p-3">
+                          <p className="font-bold">Quad9 DNS Cache</p>
                         </div>
                       </div>
                     </div>
