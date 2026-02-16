@@ -1,214 +1,342 @@
-import { Globe, Wifi, Users, CheckCircle, Eye, Target, Heart } from "lucide-react";
+"use client";
+
+import { Globe, Wifi, Users, CheckCircle, Eye, Target, Heart, ArrowRight, ChevronRight, Zap } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const stats = [
-  { icon: Globe, value: "07", label: "AS connectes" },
-  { icon: Wifi, value: "10", label: "Ports actifs" },
-  { icon: Users, value: "04", label: "Utilisateurs RS" },
-  { icon: CheckCircle, value: "100%", label: "Disponibilite" },
+  { icon: Globe, value: "07", label: "AS connectes", suffix: "" },
+  { icon: Wifi, value: "10", label: "Ports actifs", suffix: "" },
+  { icon: Users, value: "04", label: "Utilisateurs RS", suffix: "" },
+  { icon: CheckCircle, value: "100", label: "Disponibilite", suffix: "%" },
 ];
 
 const members = [
-  { name: "Moov Africa", color: "bg-blue-600", textColor: "text-white" },
-  { name: "GVA", color: "bg-white border-2 border-green-500", textColor: "text-green-600" },
-  { name: "YAS", color: "bg-green-500", textColor: "text-white" },
-  { name: "CAFE Informatique", color: "bg-white border-2 border-green-600", textColor: "text-green-700" },
-  { name: "TEOLIS", color: "bg-yellow-500", textColor: "text-white" },
+  { name: "Moov Africa", initials: "MA" },
+  { name: "GVA", initials: "GVA" },
+  { name: "YAS", initials: "YAS" },
+  { name: "CAFE Informatique", initials: "CAFE" },
+  { name: "TEOLIS", initials: "TEO" },
 ];
 
-const news = [
-  {
-    tag: "Actualite",
-    title: "TGIX augmente sa capacite a 10Tbps",
-    desc: "Mise a niveau majeure de l'infrastructure permettant une connectivite plus rapide a travers l'Afrique de l'Ouest.",
-    date: "15 mars 2024",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80",
-  },
-  {
-    tag: "Actualite",
-    title: "TGIX etend son reseau a cinq nouveaux pays",
-    desc: "Initiative visant a renforcer l'acces a Internet en Afrique de l'Ouest avec des points de presence strategiques.",
-    date: "15 mars 2024",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80",
-  },
-  {
-    tag: "Evenement",
-    title: "TGIX lance son service de cloud hybride",
-    desc: "Nouvelle offre combinant les avantages du cloud public et prive pour une flexibilite accrue.",
-    date: "15 mars 2024",
-    image: "https://images.unsplash.com/photo-1506399558188-acca6f8cbf41?w=400&q=80",
-  },
+const values = [
+  { icon: Eye, title: "Notre vision", desc: "Un internet de qualite, performant et accessible a tous au Togo." },
+  { icon: Target, title: "Notre mission", desc: "Offrir des infrastructures d'interconnexion neutres et promouvoir le developpement des contenus locaux." },
+  { icon: Heart, title: "Nos valeurs", desc: "Professionnalisme, loyaute et transparence." },
 ];
 
 const partners = ["Ministeres", "ARCEP", "AFRINIC", "PCH", "PeeringDB", "AFIX"];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
 export default function Home() {
   return (
     <main>
-      {/* Hero */}
-      <section className="banner-bg relative">
-        <div className="banner-overlay py-24 md:py-40 text-center">
-          <div className="max-w-3xl mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-wide uppercase">
-              Le coeur de<br />l&apos;internet togolais
-            </h1>
-            <p className="mt-6 text-gray-300 text-base md:text-lg max-w-xl mx-auto">
-              TGIX favorise une interconnexion rapide, securisee et locale entre les acteurs du numerique au Togo.
-            </p>
-            <div className="flex gap-4 justify-center mt-8">
-              <Link
-                href="/"
-                className="bg-tgix-green hover:bg-tgix-green-dark text-white font-semibold px-6 py-3 rounded text-sm transition-colors"
-              >
-                EN SAVOIR PLUS
-              </Link>
-              <Link
-                href="/"
-                className="border border-white text-white font-semibold px-6 py-3 rounded text-sm hover:bg-white/10 transition-colors"
-              >
-                EN SAVOIR PLUS
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── Hero ── */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-tgix-dark">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed opacity-30"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80')" }}
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-tgix-darker/90 via-tgix-dark/80 to-tgix-dark" />
 
-      {/* Chiffres cles */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-tgix-dark mb-12">Chiffres cles</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((s, i) => (
-              <div key={i} className="flex flex-col items-center">
-                <div className="w-14 h-14 rounded-full bg-tgix-green/10 flex items-center justify-center mb-3">
-                  <s.icon className="text-tgix-green" size={28} />
-                </div>
-                <span className="text-4xl md:text-5xl font-extrabold text-tgix-dark">{s.value}</span>
-                <span className="text-sm text-tgix-gray mt-1">{s.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* Decorative orbs */}
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-tgix-green/5 rounded-full blur-[120px] animate-pulse-glow pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-tgix-green/3 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Nos membres */}
-      <section className="py-16 bg-tgix-light">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-4">Nos membres</h2>
-          <p className="text-sm text-tgix-gray max-w-2xl mx-auto mb-10">
-            Rejoignez les principales entreprises de telecommunications et de technologie d&apos;Afrique pour construire l&apos;infrastructure numerique du continent.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6">
-            {members.map((m, i) => (
-              <div
-                key={i}
-                className={`${m.color} ${m.textColor} rounded-full px-6 py-3 font-bold text-sm flex items-center justify-center min-w-[120px] shadow-sm`}
-              >
-                {m.name}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* Grid lines */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
 
-      {/* Interconnexion */}
-      <section className="py-16 bg-tgix-dark text-white text-center">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Une interconnexion ouverte et equitable
-          </h2>
-          <p className="text-sm text-gray-300 mb-8 max-w-2xl mx-auto">
-            TGIX adopte une politique d&apos;echange de trafic multilateral, simple transparent. Cela permet a tous les membres de reduire la complexite et d&apos;ameliorer la performance de contenus locaux.
-          </p>
-          <Link
-            href="#"
-            className="inline-block border border-white text-white font-semibold px-6 py-3 rounded text-sm hover:bg-white/10 transition-colors"
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
-            Consultez la politique complete
-          </Link>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/[0.08] backdrop-blur-sm mb-8">
+              <Zap size={14} className="text-tgix-green" />
+              <span className="text-xs font-medium text-white/60">Point d&apos;echange Internet du Togo</span>
+            </div>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-[0.95]"
+          >
+            Le coeur de
+            <br />
+            <span className="gradient-text">l&apos;internet</span>
+            <br />
+            togolais
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.35 }}
+            className="mt-8 text-white/40 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+          >
+            TGIX favorise une interconnexion rapide, securisee et locale entre les acteurs du numerique au Togo.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mt-10"
+          >
+            <Link
+              href="/tgix"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-tgix-green text-tgix-dark font-semibold text-sm rounded-full hover:shadow-[0_0_40px_rgba(46,232,165,0.3)] transition-all duration-500"
+            >
+              Decouvrir TGIX
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/[0.06] text-white font-semibold text-sm rounded-full border border-white/[0.1] hover:bg-white/[0.1] backdrop-blur-sm transition-all duration-500"
+            >
+              Nous contacter
+              <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
         </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
       </section>
 
-      {/* Vision, Mission, Valeurs */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-tgix-dark mb-12">
-            Construire ensemble l&apos;avenir du numerique togolais
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-tgix-green/10 flex items-center justify-center mb-4">
-                <Eye className="text-tgix-green" size={32} />
-              </div>
-              <h3 className="font-bold text-lg text-tgix-dark mb-2">Notre vision</h3>
-              <p className="text-sm text-tgix-gray">
-                Un internet de qualite performant et accessible a tout du Togo
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-tgix-green/10 flex items-center justify-center mb-4">
-                <Target className="text-tgix-green" size={32} />
-              </div>
-              <h3 className="font-bold text-lg text-tgix-dark mb-2">Notre mission</h3>
-              <p className="text-sm text-tgix-gray">
-                Offrir des infrastructures d&apos;interconnexion neutres et promouvoir le developpement des contenus locaux
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-tgix-green/10 flex items-center justify-center mb-4">
-                <Heart className="text-tgix-green" size={32} />
-              </div>
-              <h3 className="font-bold text-lg text-tgix-dark mb-2">Nos valeurs</h3>
-              <p className="text-sm text-tgix-gray">
-                Professionnalisme, loyaute et Transparence
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── Stats ── */}
+      <section className="relative py-24 md:py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-16"
+          >
+            <motion.div variants={fadeUp} custom={0}>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-tgix-green mb-4">
+                <span className="w-8 h-[2px] bg-tgix-green" /> Chiffres cles
+              </span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-5xl font-bold text-tgix-dark tracking-tight">
+              TGIX en quelques chiffres
+            </motion.h2>
+          </motion.div>
 
-      {/* Dernieres nouvelles */}
-      <section className="py-16 bg-tgix-light">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-2">Dernieres nouvelles</h2>
-          <p className="text-sm text-tgix-gray mb-10">Restez informe de nos derniers developpements</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {news.map((n, i) => (
-              <div key={i} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={n.image}
-                    alt={n.title}
-                    className="w-full h-full object-cover"
-                  />
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          >
+            {stats.map((s, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i}
+                className="group relative p-8 rounded-3xl bg-tgix-light border border-transparent hover:border-tgix-green/20 transition-all duration-500 card-hover text-center"
+              >
+                <div className="w-14 h-14 mx-auto rounded-2xl bg-tgix-green/10 flex items-center justify-center mb-5 group-hover:bg-tgix-green/20 transition-colors duration-500">
+                  <s.icon size={24} className="text-tgix-green" />
                 </div>
-                <div className="p-5">
-                  <span className={`text-xs font-semibold ${n.tag === "Evenement" ? "text-tgix-green" : "text-tgix-green"}`}>
-                    🏷 {n.tag}
-                  </span>
-                  <h3 className="font-bold text-base text-tgix-dark mt-2 mb-2">{n.title}</h3>
-                  <p className="text-sm text-tgix-gray mb-3">{n.desc}</p>
-                  <p className="text-xs text-tgix-gray">{n.date}</p>
+                <div className="text-4xl md:text-5xl font-bold text-tgix-dark tracking-tight">
+                  {s.value}<span className="text-tgix-green">{s.suffix}</span>
                 </div>
-              </div>
+                <p className="text-sm text-tgix-muted mt-2 font-medium">{s.label}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Partenaires */}
-      <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-10">
-            Fiable pour les grandes organisations
-          </h2>
-          <div className="flex flex-wrap justify-center items-center gap-12">
+      {/* ── Members ── */}
+      <section className="relative py-24 md:py-32 bg-tgix-light overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-tgix-green/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-6 relative">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-16"
+          >
+            <motion.div variants={fadeUp} custom={0}>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-tgix-green mb-4">
+                <span className="w-8 h-[2px] bg-tgix-green" /> Nos membres
+              </span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-5xl font-bold text-tgix-dark tracking-tight mb-4">
+              Membres connectes
+            </motion.h2>
+            <motion.p variants={fadeUp} custom={2} className="text-tgix-muted max-w-2xl mx-auto">
+              Rejoignez les principales entreprises de telecommunications et de technologie pour construire l&apos;infrastructure numerique du Togo.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4"
+          >
+            {members.map((m, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i}
+                className="group relative p-6 rounded-2xl bg-white border border-tgix-border hover:border-tgix-green/30 hover:shadow-lg transition-all duration-500 text-center card-hover"
+              >
+                <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-tgix-dark to-tgix-navy flex items-center justify-center mb-4 group-hover:from-tgix-green group-hover:to-tgix-green-dark transition-all duration-500">
+                  <span className="text-white font-bold text-sm">{m.initials}</span>
+                </div>
+                <p className="text-sm font-semibold text-tgix-dark">{m.name}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="text-center mt-12"
+          >
+            <Link
+              href="/membres"
+              className="group inline-flex items-center gap-2 text-sm font-semibold text-tgix-dark hover:text-tgix-green transition-colors"
+            >
+              Voir tous les membres
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Interconnexion CTA ── */}
+      <section className="relative py-24 md:py-32 bg-tgix-dark overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-tgix-green/5 rounded-full blur-[150px] pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto px-6 text-center relative">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-tgix-green mb-6">
+              <span className="w-8 h-[2px] bg-tgix-green" /> Peering
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
+              Une interconnexion
+              <br />
+              <span className="gradient-text">ouverte et equitable</span>
+            </h2>
+            <p className="text-white/40 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+              TGIX adopte une politique d&apos;echange de trafic multilateral, simple et transparente. Cela permet a tous les membres de reduire la complexite et d&apos;ameliorer la performance des contenus locaux.
+            </p>
+            <Link
+              href="/services"
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-white/[0.06] text-white font-semibold text-sm rounded-full border border-white/[0.1] hover:bg-tgix-green hover:text-tgix-dark hover:border-tgix-green transition-all duration-500"
+            >
+              Consultez la politique complete
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Vision, Mission, Valeurs ── */}
+      <section className="relative py-24 md:py-32 bg-white overflow-hidden">
+        <div className="absolute -top-32 -left-32 w-[400px] h-[400px] bg-tgix-green/3 rounded-full blur-[120px] pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-6 relative">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-16"
+          >
+            <motion.div variants={fadeUp} custom={0}>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-tgix-green mb-4">
+                <span className="w-8 h-[2px] bg-tgix-green" /> Qui sommes-nous
+              </span>
+            </motion.div>
+            <motion.h2 variants={fadeUp} custom={1} className="text-3xl md:text-5xl font-bold text-tgix-dark tracking-tight">
+              Construire ensemble l&apos;avenir
+              <br />du numerique togolais
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            {values.map((v, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i}
+                className="group relative p-8 rounded-3xl bg-tgix-light border border-transparent hover:border-tgix-green/20 transition-all duration-500 card-hover"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-tgix-green/10 flex items-center justify-center mb-6 group-hover:bg-tgix-green/20 transition-colors duration-500">
+                  <v.icon size={24} className="text-tgix-green" />
+                </div>
+                <h3 className="text-lg font-bold text-tgix-dark mb-3">{v.title}</h3>
+                <p className="text-sm text-tgix-muted leading-relaxed">{v.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Partners ── */}
+      <section className="py-20 bg-tgix-light border-t border-tgix-border">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-tgix-muted">Nos partenaires</span>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center items-center gap-8 md:gap-16"
+          >
             {partners.map((p, i) => (
-              <div key={i} className="text-2xl md:text-3xl font-extrabold text-tgix-dark opacity-60">
+              <span
+                key={i}
+                className="text-xl md:text-2xl font-bold text-tgix-dark/20 hover:text-tgix-dark/60 transition-colors duration-500 cursor-default"
+              >
                 {p}
-              </div>
+              </span>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>
