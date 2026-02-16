@@ -171,11 +171,14 @@ export default function MembresPage() {
                         <span className="text-2xl">🌐</span>
                       )}
                       {m.logo === "moov" && (
-                        <div className="text-center">
-                          <span className="text-[10px] block font-bold">Moov</span>
-                          <span className="text-[8px]">Africa</span>
-                        </div>
-                      )}
+                          <div className="text-center">
+                            <span className="text-[10px] block font-bold">Moov</span>
+                            <span className="text-[8px]">Africa</span>
+                          </div>
+                        )}
+                        {m.logo === "teolis" && (
+                          <span className="text-xs font-black tracking-tight">TEOLIS</span>
+                        )}
                     </div>
                     <h3 className="font-bold text-sm text-tgix-dark uppercase">{m.name}</h3>
                     <p className="text-sm text-gray-600 leading-relaxed">{m.description}</p>
