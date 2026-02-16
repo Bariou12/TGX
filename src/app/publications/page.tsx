@@ -1,7 +1,7 @@
 "use client";
 
 import PageBanner from "@/components/PageBanner";
-import { FileText, Download } from "lucide-react";
+import { FileText } from "lucide-react";
 
 const categories = [
   { id: "rapports", label: "Rapports d'activité" },
