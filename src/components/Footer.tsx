@@ -1,9 +1,36 @@
 import Link from "next/link";
 import { Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
 
+const partenaires = [
+  { name: "Ministères", initials: "MIN" },
+  { name: "ARCEP", initials: "ARCEP" },
+  { name: "AFRINIC", initials: "AFRINIC" },
+  { name: "PCH", initials: "PCH" },
+  { name: "PeeringDB", initials: "PDB" },
+  { name: "AFIX", initials: "AFIX" },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-tgix-dark text-white">
+      {/* Partenaires */}
+      <div className="border-b border-gray-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <h3 className="font-bold text-base text-center mb-6">Nos Partenaires</h3>
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+            {partenaires.map((p) => (
+              <div
+                key={p.name}
+                className="w-20 h-20 rounded-lg bg-white/10 border border-gray-600 flex flex-col items-center justify-center hover:bg-white/20 transition-colors"
+              >
+                <span className="text-xs font-bold text-tgix-green">{p.initials}</span>
+                <span className="text-[9px] text-gray-300 mt-1 text-center leading-tight">{p.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo & Description */}
@@ -21,9 +48,10 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-base mb-4">Liens rapides</h3>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li><Link href="/" className="hover:text-tgix-green transition-colors">A propos de nous</Link></li>
+              <li><Link href="/tgix" className="hover:text-tgix-green transition-colors">A propos de nous</Link></li>
               <li><Link href="/membres" className="hover:text-tgix-green transition-colors">Membres</Link></li>
               <li><Link href="/services" className="hover:text-tgix-green transition-colors">Services</Link></li>
+              <li><Link href="/publications" className="hover:text-tgix-green transition-colors">Publications</Link></li>
               <li><Link href="/actualites" className="hover:text-tgix-green transition-colors">Nouvelles</Link></li>
             </ul>
           </div>
@@ -32,10 +60,10 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-base mb-4">Ressources</h3>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li><Link href="#" className="hover:text-tgix-green transition-colors">Documentation</Link></li>
+              <li><Link href="/faq" className="hover:text-tgix-green transition-colors">FAQ</Link></li>
               <li><Link href="#" className="hover:text-tgix-green transition-colors">Politique de peering</Link></li>
-              <li><Link href="#" className="hover:text-tgix-green transition-colors">Informations techniques</Link></li>
-              <li><Link href="#" className="hover:text-tgix-green transition-colors">Support</Link></li>
+              <li><Link href="/architecture" className="hover:text-tgix-green transition-colors">Architecture technique</Link></li>
+              <li><Link href="/contact" className="hover:text-tgix-green transition-colors">Support</Link></li>
             </ul>
           </div>
 
