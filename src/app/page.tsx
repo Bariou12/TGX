@@ -13,6 +13,7 @@ const members = [
   { name: "GVA", color: "bg-white border-2 border-green-500", textColor: "text-green-600" },
   { name: "YAS", color: "bg-green-500", textColor: "text-white" },
   { name: "CAFE Informatique", color: "bg-white border-2 border-green-600", textColor: "text-green-700" },
+  { name: "TEOLIS", color: "bg-yellow-500", textColor: "text-white" },
 ];
 
 const news = [
