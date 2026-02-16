@@ -20,10 +20,10 @@ const tarifsFCFA = [
 const tarifsDollars = [
   { designation: "Membership fees", membres: "509 $", nonMembres: "0 $" },
   { designation: "Annual Membership fees", membres: "245 $", nonMembres: "0 $" },
-  { designation: "Annual interconnection charges\nPorts 10 Mbps", membres: "207 $", nonMembres: "414 $" },
-  { designation: "Annual interconnection charges\nPorts 100 Mbps", membres: "862 $", nonMembres: "1724 $" },
-  { designation: "Annual interconnection charges\nPorts 1 Gbps", membres: "2586 $", nonMembres: "5175 $" },
-  { designation: "Annual interconnection charges\nPorts 10 Gbps", membres: "51751 $", nonMembres: "10345 $" },
+  { designation: "Annual interconnection charges\nPorts 1 Gbps", membres: "2 586 $", nonMembres: "5 175 $" },
+  { designation: "Annual interconnection charges\nPorts 10 Gbps", membres: "5 175 $", nonMembres: "10 345 $" },
+  { designation: "Annual interconnection charges\nPorts 40 Gbps", membres: "8 621 $", nonMembres: "17 241 $" },
+  { designation: "Annual interconnection charges\nPorts 100 Gbps", membres: "13 793 $", nonMembres: "27 586 $" },
 ];
 
 function TarifTable({ rows, currencyLabel }: { rows: typeof tarifsFCFA; currencyLabel: string }) {
