@@ -131,22 +131,7 @@ export default function TGIXPage() {
               </>
             )}
 
-            {active === "textes" && (
-              <>
-                <h2 className="text-2xl md:text-3xl font-bold text-tgix-dark mb-6">
-                  Textes fondamentaux
-                </h2>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                  Les textes fondamentaux du TGIX définissent le cadre juridique, organisationnel et opérationnel de l&apos;association. Ils comprennent notamment :
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-sm text-gray-600">
-                  <li>Les statuts de l&apos;association TGIX</li>
-                  <li>Le règlement intérieur</li>
-                  <li>La politique de peering</li>
-                  <li>Les conditions générales d&apos;adhésion et d&apos;utilisation</li>
-                </ul>
-              </>
-            )}
+
           </div>
         </div>
       </div>
