@@ -7,7 +7,6 @@ const sections = [
   { id: "apropos", label: "A propos" },
   { id: "conseil", label: "Conseil d'administration" },
   { id: "direction", label: "Direction exécutive" },
-  { id: "textes", label: "Textes fondamentaux" },
 ];
 
 const conseilMembers = [
