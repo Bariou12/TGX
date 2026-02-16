@@ -104,10 +104,10 @@ export default function ServicesPage() {
                   <strong className="text-tgix-dark">Le peering</strong> : la politique de peering au TGIX est ouverte. Les membres peuvent établir une session avec les
                   routes serveurs disponibles au IXP ou établir plusieurs sessions bilatérales à travers l&apos;IXP.
                   <br />
-                  Le TGIX met à disposition des membres les ressources nécessaires pour son interconnexion au nœud,
-                  notamment les adresses IP et les VLAN nécessaires le cas échéant, les ports de (10, 100, 1000 et 10 000
-                  Mbps) à la demande du client. Deux routes serveurs sont disponibles pour offrir des facilités d&apos;interconnexion
-                  aux pairs qui le souhaitent.
+                    Le TGIX met à disposition des membres les ressources nécessaires pour son interconnexion au nœud,
+                    notamment les adresses IP et les VLAN nécessaires le cas échéant, les ports de (1 Gbps, 10 Gbps, 40 Gbps et 100
+                    Gbps) à la demande du client. Deux routes serveurs sont disponibles pour offrir des facilités d&apos;interconnexion
+                    aux pairs qui le souhaitent.
                 </li>
                 <li className="text-sm text-gray-600 leading-relaxed">
                   <span className="w-2 h-2 inline-block rounded-full bg-tgix-dark mr-2 -translate-y-px"></span>
